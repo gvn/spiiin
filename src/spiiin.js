@@ -1,4 +1,4 @@
-angular.module('spiiin', [])
+angular.module('rad.spiiin', [])
   .directive('radSpinner', function () {
     return {
       restrict: 'E',
@@ -8,7 +8,7 @@ angular.module('spiiin', [])
         data: '=radSpinnerData', // Spinner will only show if this data is undefined
         timeout: '=radSpinnerTimeout' // How long the spinner will show before a warning appears (In MS)
       },
-      templateUrl: 'spinner.html',
+      templateUrl: '/src/spinner.html', // TODO - modularize path
       link: function ($scope, el) {
         $scope.isTimedOut = false;
 

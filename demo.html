@@ -1,23 +1,44 @@
 <!doctype html>
-<html>
+<html lang="en" ng-app="testApp">
   <head>
     <title>Spiiin Demo</title>
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css">
     <style type="text/css">
       body {
-        width: 960px;
+        max-width: 640px;
         margin: auto;
-        font-family: Helvetica, Arial, sans-serif;
+      }
+      .jumbotron {
+        background: none;
+        padding: 0;
+        margin-bottom: 100px;
+      }
+      rad-spinner .fa-cog {
+        margin-bottom: 20px;
       }
     </style>
   </head>
-  <body>
-    <h1>Spiiin Demo</h1>
+  <body ng-controller="testController">
+    <div class="jumbotron">
+      <h1>Spiiin Demo</h1>
+      <p>Click the button to simulate XHR</p>
+      <p><a ng-click="makeFakeRequest()" class="btn btn-primary btn-lg" role="button">Go!</a></p>
+    </div>
 
-    <i ng-hide="dataFailed" class="fa fa-cog fa-spin fa-3x"></i>
+    <rad-spinner ng-show="requestInProgress"
+      rad-spinner-delay="400"
+      rad-spinner-timeout="5000"
+      rad-spinner-data="dummyData"
+      rad-spinner-data-failed="didServiceFail">
+    </rad-spinner>
 
-    <script src="../bower_components/angular/angular.js"></script>
+    <div ng-show="dummyData" class="alert alert-success" role="alert"><i class="fa fa-thumbs-up"></i> Data loaded!</div>
+
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
     <script src="../src/spiiin.js"></script>
+    <script src="demo.js"></script>
   </body>
 </html>
