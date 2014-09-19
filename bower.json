@@ -1,0 +1,29 @@
+{
+  "name": "spiiin",
+  "version": "0.1.0",
+  "authors": [
+    "Gvn Lazar Suntop <gavin@gsuntop.com>"
+  ],
+  "description": "A loading indicator (spinner) directive for AngularJS.",
+  "main": "spiiin.js",
+  "keywords": [
+    "spinner",
+    "angular",
+    "angularjs",
+    "load"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/gvn/spiiin",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.2.17",
+    "font-awesome": "4.2.0",
+    "jquery": "^2.1.0"
+  }
+}
