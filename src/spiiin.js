@@ -8,7 +8,10 @@ angular.module('rad.spiiin', [])
         data: '=radSpinnerData', // Spinner will only show if this data is undefined
         timeout: '=radSpinnerTimeout' // How long the spinner will show before a warning appears (In MS)
       },
-      templateUrl: '/src/spinner.html', // TODO - modularize path
+      // Since templateUrl is relative to the view it has to be manually set in the HTML :/
+      templateUrl: function(element, attr) {
+        return attr.templateUrl;
+      },
       link: function ($scope, el) {
         $scope.isTimedOut = false;
 

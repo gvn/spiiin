@@ -22,12 +22,14 @@
   </head>
   <body ng-controller="testController">
     <div class="jumbotron">
-      <h1>Spiiin Demo</h1>
+      <h1>Spiiin</h1>
       <p>Click the button to simulate XHR</p>
       <p><a ng-click="makeFakeRequest()" class="btn btn-primary btn-lg" role="button">Go!</a></p>
     </div>
 
-    <rad-spinner ng-show="requestInProgress"
+    <rad-spinner
+      ng-show="requestInProgress"
+      template-url="src/spinner.html"
       rad-spinner-delay="400"
       rad-spinner-timeout="5000"
       rad-spinner-data="dummyData"
