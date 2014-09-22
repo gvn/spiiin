@@ -3,35 +3,38 @@ angular.module('rad.spiiin', [])
     return {
       restrict: 'E',
       scope: {
+        dataLoading: '=radSpinnerDataLoading', // Truthy value will show spinner
         dataFailed: '=radSpinnerDataFailed', // Truthy value will cause an error message to show
-        delay: '=radSpinnerDelay', // Delay before showing spinner (In MS)
-        data: '=radSpinnerData', // Spinner will only show if this data is undefined
+        data: '=radSpinnerData', // This data becoming defined causes a success event
         timeout: '=radSpinnerTimeout' // How long the spinner will show before a warning appears (In MS)
       },
-      // Since templateUrl is relative to the view it has to be manually set in the HTML :/
+      // Since templateUrl is relative to the view, the path has to be manually set in the HTML
       templateUrl: function(element, attr) {
-        return attr.templateUrl;
+        return attr.radSpinnerTemplate;
       },
       link: function ($scope, el) {
-        $scope.isTimedOut = false;
+        var serviceTimeout;
 
-        el.hide().fadeTo(0,0);
+        function preload() {
+          $scope.isTimedOut = false;
 
-        var revealDelay = setTimeout(function() {
-          el.fadeTo(200, 1);
-        }, $scope.delay);
+          serviceTimeout = setTimeout(function () {
+            $scope.isTimedOut = true;
+            $scope.$apply();
+          }, $scope.timeout)
+        }
 
-        var errorDelay = setTimeout(function () {
-          $scope.isTimedOut = true;
-          $scope.$apply();
-        }, $scope.timeout)
+        // dataLoading provides an API for running the preload method when it changes to true
+        $scope.$watch('dataLoading', function (newValue, oldValue) {
+          if (newValue === true) {
+            preload();
+          }
+        })
 
         $scope.$watch('data', function () {
           if (typeof $scope.data !== 'undefined') {
-            clearTimeout(revealDelay);
-            clearTimeout(errorDelay);
-
-            el.hide();
+            clearTimeout(serviceTimeout);
+            $scope.isTimedOut = false;
           }
         });
       }

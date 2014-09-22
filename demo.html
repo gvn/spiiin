@@ -28,11 +28,10 @@
     </div>
 
     <rad-spinner
-      ng-show="requestInProgress"
-      template-url="src/spinner.html"
-      rad-spinner-delay="400"
+      rad-spinner-template="src/spinner.html"
       rad-spinner-timeout="5000"
       rad-spinner-data="dummyData"
+      rad-spinner-data-loading="requestInProgress"
       rad-spinner-data-failed="didServiceFail">
     </rad-spinner>
 
