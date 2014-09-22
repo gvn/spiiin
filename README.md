@@ -1,3 +1,3 @@
 # Spiiin
 
-**A load progress indicator and feedback directive for AngularJS**
+**A loading feedback directive for AngularJS**

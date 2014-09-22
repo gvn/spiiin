@@ -4,7 +4,7 @@
   "authors": [
     "Gvn Lazar Suntop <gavin@gsuntop.com>"
   ],
-  "description": "A loading indicator (spinner) directive for AngularJS.",
+  "description": "A loading feedback directive for AngularJS.",
   "main": "spiiin.js",
   "keywords": [
     "spinner",
@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "angular": "^1.2.17",
-    "font-awesome": "4.2.0",
-    "jquery": "^2.1.0"
+    "font-awesome": "4.2.0"
   }
 }
