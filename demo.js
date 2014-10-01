@@ -6,14 +6,14 @@ angular
     $scope.makeFakeRequest = function () {
       clearTimeout(timeout);
 
-      $scope.dummyData = undefined;
+      $scope.dummyData = null;
       $scope.requestInProgress = true;
       $scope.didServiceFail = false;
 
       timeout = setTimeout(function () {
         // Simulate random failures
         if (Math.random() > 0.3) {
-          $scope.dummyData = true;
+          $scope.dummyData = ['foo', 'bar'];
         } else {
           $scope.didServiceFail = true;
         }
@@ -21,5 +21,5 @@ angular
         $scope.requestInProgress = false;
         $scope.$apply();
       }, Math.floor(Math.random() * 15000));
-    }
+    };
   }]);
